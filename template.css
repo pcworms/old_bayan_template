@@ -263,6 +263,23 @@ a:active {
     cursor: pointer;
 }
 
+.block-content .messages .messages-content h3 {
+    color: rgba(255, 255, 255, 0.8);
+    font: 14px "yekan", "Times New Roman", Times, Arial, serif;
+    text-align: center;
+    cursor: default;
+    margin: 0 0 7px;
+}
+
+.block-content .messages .messages-content h3 a.comment_count {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.block-content .messages .messages-content h3 a.comment_count:hover {
+    color: rgba(255, 255, 255, 1);
+    cursor: pointer;
+}
+
 
 /*-- Content-post --*/
 
@@ -705,6 +722,14 @@ img.rateup {
 .comment-email:hover {
     background-position: center -79px;
     cursor: pointer;
+}
+
+.comments-in-post-list {
+    margin-top: -15px;
+}
+
+.comments-in-post-list .post-comments {
+    margin-bottom: 5px;
 }
 
 
