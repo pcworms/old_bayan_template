@@ -9,7 +9,19 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
     <meta name="referrer" content="unsafe-url">
     <link rel="shortcut icon" href="https://bayanbox.ir/download/6555852378268842239/pcworms.ico">
-    <head:script></head:script>
+    <head:script>
+        <script type="text/javascript">
+            (function() {
+                var now = new Date();
+                var head = document.getElementsByTagName('head')[0];
+                var script = document.createElement('script');
+                script.async = true;
+                var script_address = 'https://cdn.yektanet.com/js/pcworms.blog.ir/native-pcworms.blog.ir-19921.js';
+                script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
+                head.appendChild(script);
+            })();
+        </script>
+    </head:script>
     <head:style></head:style>
 </head>
 
@@ -69,6 +81,7 @@
             </div>
         </div>
         <div class="block-content">
+            <div class="ads" id="pos-article-display-29017"></div>
             <div class="block-content-view">
                 <!-- شروع شرح مطلب -->
                 <box:post_detail>
@@ -87,7 +100,11 @@
                         <div class="post-title">
                             <h2><a href="(*post_link*)">(*post_title*)</a></h2>
                         </div>
-                        <div class="post-content">(*post_full_content*)</div>
+                        <div class="post-content">
+                            <div class="ads" id="pos-article-text-card-29012"></div>
+                            (*post_full_content*)
+                            <div class="ads" id="pos-article-display-29014"></div>
+                        </div>
                         <box:post_tags>
                             <div class="post-details bottom custom nobg">
                                 <div class="post-details-tags">
@@ -99,7 +116,8 @@
                         </box:post_tags>
                         <div class="post-details bottom">
                             <div class="post-details-left">
-                                <a class="post-details-comment" href="http://pcworms.blog.ir/page/licence">مجوز مطالب و محتوا</a>
+                                <a class="post-details-comment" href="http://pcworms.blog.ir/page/licence">مجوز مطالب و
+									محتوا</a>
                                 <span class="post-details-date">(*post_date format="%y/%m/%d"*)</span>
                                 <box:post_rating>
                                     <!-- CAUTION: Don't edit these lines unless you know what you are doing
@@ -108,13 +126,16 @@ rate-button, rete-up, rate-down, rated) -->
                                     <span class="rate-box (*user_rated*)">
 										<span class="rate-button-box rate-up (*user_rated_up*)">
 											<a class="rate-button" href="(*rate_up_link*)" rel="nofollow" title="موافق">
-												<img alt="موافقین" class="rateimg" src="//blog.ir/media/images/cleardot.gif">
+												<img alt="موافقین" class="rateimg"
+													src="//blog.ir/media/images/cleardot.gif">
 												(*up_rates*)
 											</a>
 										</span>
                                     <span class="rate-button-box rate-down (*user_rated_down*)">
-											<a class="rate-button" href="(*rate_down_link*)" rel="nofollow" title="مخالف">
-												<img alt="مخالفین" class="rateimg" src="//blog.ir/media/images/cleardot.gif">
+											<a class="rate-button" href="(*rate_down_link*)" rel="nofollow"
+												title="مخالف">
+												<img alt="مخالفین" class="rateimg"
+													src="//blog.ir/media/images/cleardot.gif">
 												(*down_rates*)
 											</a>
 										</span>
@@ -136,7 +157,8 @@ rate-button, rete-up, rate-down, rated) -->
                         <div class="align">
                             <div class="messages">
                                 <div class="messages-content">
-                                    <h2>نظرات <a class="comment_count" href="(*post_link*)#comments"> ((*post_comment_count*))</a></h2>
+                                    <h2>نظرات <a class="comment_count" href="(*post_link*)#comments">
+											((*post_comment_count*))</a></h2>
                                     <check:if not post_comment_count>
                                         <center>هیچ نظری هنوز ثبت نشده است</center>
                                     </check:if>
@@ -158,7 +180,8 @@ rate-button, rete-up, rate-down, rated) -->
                                             <check:if comment_email>
                                                 <a class="comment-email" href="mailto:(*comment_email*)" title="(*comment_email*)"></a>
                                             </check:if>
-                                            <a class="comment-date" href="(*comment_link*)">(*comment_date format="%d %B %y ، %H:%M"*)</a>
+                                            <a class="comment-date" href="(*comment_link*)">(*comment_date format="%d %B
+												%y ، %H:%M"*)</a>
                                         </div>
                                         <div class="comment-details-right">
                                             <span class="comment-avatar"><img src="(*comment_avatar*)"></span>
@@ -215,7 +238,8 @@ rate-button, rete-up, rate-down, rated) -->
                         <div class="align">
                             <div class="messages">
                                 <div class="messages-content">
-                                    <h2>نظرات <a class="comment_count" href="(*page_link*)#comments"> ((*page_comment_count*))</a></h2>
+                                    <h2>نظرات <a class="comment_count" href="(*page_link*)#comments">
+											((*page_comment_count*))</a></h2>
                                     <check:if not page_comment_count>
                                         <center>هیچ نظری هنوز ثبت نشده است</center>
                                     </check:if>
@@ -237,10 +261,12 @@ rate-button, rete-up, rate-down, rated) -->
                                             <check:if comment_email>
                                                 <a class="comment-email" href="mailto:(*comment_email*)" title="(*comment_email*)"></a>
                                             </check:if>
-                                            <a class="comment-date" href="(*comment_link*)">(*comment_date format="%d %B %y ، %H:%M"*)</a>
+                                            <a class="comment-date" href="(*comment_link*)">(*comment_date format="%d %B
+												%y ، %H:%M"*)</a>
                                         </div>
                                         <div class="comment-details-right">
-                                            <span class="comment-avatar"><img src="//blog.ir/media/images/guest.png?1"></span>
+                                            <span class="comment-avatar"><img
+													src="//blog.ir/media/images/guest.png?1"></span>
                                             <span class="comment-name">(*comment_fullname*)</span>
                                         </div>
                                     </div>
@@ -295,7 +321,8 @@ rate-button, rete-up, rate-down, rated) -->
                         <div class="post post_list <check:if post_pinned>pinned</check:if> <check:if not post_has_send_comment>no-comment</check:if>">
                             <check:if post_image>
                                 <div class="post-details over">
-                                    <check:if post_date><span class="post-details-date none">(*post_date*)</span></check:if>
+                                    <check:if post_date><span class="post-details-date none">(*post_date*)</span>
+                                    </check:if>
                                     <check:if post_author><img src="(*post_author_avatar*)" width="25" height="25"><span class="post-details-author">(*post_author*)</span></check:if>
                                 </div>
                             </check:if>
@@ -313,23 +340,29 @@ rate-button, rete-up, rate-down, rated) -->
                             </check:if>
                             <div class="post-details bottom">
                                 <div class="post-details-left">
-                                    <a class="post-details-comment" href="http://pcworms.blog.ir/page/licence">مجوز مطالب و محتوا</a>
+                                    <a class="post-details-comment" href="http://pcworms.blog.ir/page/licence">مجوز
+										مطالب و محتوا</a>
                                     <span class="post-details-date">(*post_date format="%d %B %y ، %H:%M"*)</span>
-                                    <a class="post-details-comment" href="(*post_link*)#comments">(*post_comment_count*) نظر</a>
+                                    <a class="post-details-comment" href="(*post_link*)#comments">(*post_comment_count*)
+										نظر</a>
                                     <box:post_rating>
                                         <!-- CAUTION: Don't edit these lines unless you know what you are doing
 DON'T edit rate-* classes: (rate-box rate-counter rate-button-box,
 rate-button, rete-up, rate-down, rated) -->
                                         <span class="rate-box (*user_rated*)">
 											<span class="rate-button-box rate-up (*user_rated_up*)">
-												<a class="rate-button" href="(*rate_up_link*)" rel="nofollow" title="موافق">
-													<img alt="موافقین" class="rateimg" src="//blog.ir/media/images/cleardot.gif">
+												<a class="rate-button" href="(*rate_up_link*)" rel="nofollow"
+													title="موافق">
+													<img alt="موافقین" class="rateimg"
+														src="//blog.ir/media/images/cleardot.gif">
 													(*up_rates*)
 												</a>
 											</span>
                                         <span class="rate-button-box rate-down (*user_rated_down*)">
-												<a class="rate-button" href="(*rate_down_link*)" rel="nofollow" title="مخالف">
-													<img alt="مخالفین" class="rateimg" src="//blog.ir/media/images/cleardot.gif">
+												<a class="rate-button" href="(*rate_down_link*)" rel="nofollow"
+													title="مخالف">
+													<img alt="مخالفین" class="rateimg"
+														src="//blog.ir/media/images/cleardot.gif">
 													(*down_rates*)
 												</a>
 											</span>
@@ -353,7 +386,8 @@ rate-button, rete-up, rate-down, rated) -->
                                     <div class="comments-in-post-list align">
                                         <div class="messages">
                                             <div class="messages-content">
-                                                <h3>نظرات <a class="comment_count" href="(*post_link*)#comments"> ((*post_comment_count*))</a></h3>
+                                                <h3>نظرات <a class="comment_count" href="(*post_link*)#comments">
+														((*post_comment_count*))</a></h3>
                                             </div>
 
                                             <view:post_comments>
@@ -369,10 +403,12 @@ rate-button, rete-up, rate-down, rated) -->
                                                                 <check:if comment_email>
                                                                     <a class="comment-email" href="mailto:(*comment_email*)" title="(*comment_email*)"></a>
                                                                 </check:if>
-                                                                <a class="comment-date" href="(*comment_link*)">(*comment_date format="%d %B %y ، %H:%M"*)</a>
+                                                                <a class="comment-date" href="(*comment_link*)">(*comment_date format="%d %B
+																	%y ، %H:%M"*)</a>
                                                             </div>
                                                             <div class="comment-details-right">
-                                                                <span class="comment-avatar"><img src="(*comment_avatar*)"></span>
+                                                                <span class="comment-avatar"><img
+																		src="(*comment_avatar*)"></span>
                                                                 <span class="comment-name">(*comment_fullname*)</span>
                                                             </div>
                                                         </div>
@@ -428,11 +464,17 @@ rate-button, rete-up, rate-down, rated) -->
                                 <img alt="(*blog_title*)" src="(*blog_image*)">
                             </div>
                         </check:if>
+                        <div class="chat">
+                            <a href="../post/social"><img alt="chat" src="https://img.shields.io/matrix/pcworms:mozilla.org?color=black&amp;logo=Google%20Chat&amp;logoColor=white&amp;server_fqdn=matrix.org&amp;cacheSeconds=300"></a>
+                            <a href="https://t.em/pcworms_bot"><img src="https://img.shields.io/badge/bot-@pcwroms__bot-black?logo=telegram&amp;logoColor=white&amp;cacheSeconds=3600"></a>
+                            <a href="../rss"><img src="https://img.shields.io/badge/rss-orange?logo=RSS&amp;logoColor=white&amp;cacheSeconds=3600"></a>
+                        </div>
                         <check:if blog_description>
                             <div class="blog-description">
                                 <h4>(*blog_description*)</h4>
                             </div>
                         </check:if>
+
                     </div>
                 </div>
             </box:blog_info>
@@ -457,7 +499,7 @@ rate-button, rete-up, rate-down, rated) -->
                 <div class="sidebox">
                     <div class="sidebox-title">تبلیغات</div>
                     <div class="sidebox-content view-ads">
-
+                        <div class="ads" id="pos-article-display-29015"></div>
                     </div>
                 </div>
             </box:ads>
@@ -471,7 +513,9 @@ rate-button, rete-up, rate-down, rated) -->
                                 <li class="(*category_selected*)">
                                     <check:if category_selected>
                                         <span class="category_selected">
-											<a><h3>(*category_name*) </h3></a><span class="post-list-count"> ((*category_post_count*))</span>
+											<a>
+												<h3>(*category_name*) </h3>
+											</a><span class="post-list-count"> ((*category_post_count*))</span>
                                         </span>
                                     </check:if>
                                     <check:if not category_selected>
@@ -558,6 +602,7 @@ rate-button, rete-up, rate-down, rated) -->
                                 </li>
                             </view:most_visited_posts>
                         </ul>
+                        <div id="pos-article-text-29027"></div>
                     </div>
                 </div>
             </box:most_visited_posts>
@@ -676,6 +721,8 @@ rate-button, rete-up, rate-down, rated) -->
             </div>
         </div>
     </div>
+
+
 
 </body>
 

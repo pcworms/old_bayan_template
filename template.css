@@ -8,7 +8,7 @@ html {
 
 #template-editing-message {
     text-align: center;
-    display: inherit;
+    display: none;
     /*display: none/inherit */
 }
 
@@ -352,7 +352,7 @@ a:active {
     font: 15px "yekan", "tahoma", "arial", "Times New Roman", Times, Arial, serif;
 }
 
-.post-content div:not([class]) {
+.post-content div:not([class]):not([id]) {
     color: black;
     background: rgba(255, 255, 255, 0.5);
     padding: 5px;
@@ -421,14 +421,15 @@ a:active {
     border-radius: 10px;
     padding: 10px;
     text-align: left;
-    background: #a8bfd1;
+    background: #e0e0e0;
     border-style: solid;
     border-width: 10px;
-    border-color: #4b78a0;
+    border-color: #00508f;
     font-family: Lucida Console, Lucida Sans Typewriter, monaco, Bitstream Vera Sans Mono, monospace;
     font-size: 14px;
     font-weight: 400;
     line-height: 20px;
+    max-height: 400px;
     overflow: auto;
 }
 
@@ -460,8 +461,9 @@ a:active {
 }
 
 .post-content code {
-    background-color: #123456;
-    border-radius: 3px;
+    background-color: #006664;
+    border-radius: 5px;
+    padding: 2px;
 }
 
 .post-readmore {
@@ -887,6 +889,10 @@ img.rateup {
     text-align: center;
 }
 
+.sidebox.blank .sidebox-content .chat {
+    text-align: center;
+}
+
 .sidebox.blank .sidebox-content img {
     text-align: center;
     max-width: 95%;
@@ -960,6 +966,18 @@ img.rateup {
 
 
 /*-- ADS --*/
+
+.ads {
+    color: white !important;
+}
+
+.YEKTANET.yn-article-display .yn-item .yn-item_title {
+    color: white !important;
+}
+
+.YEKTANET.yn-article-display .yn-item:hover .yn-item_title {
+    color: #18d0eb !important;
+}
 
 .sidebox-content.view-ads {
     text-align: center;
