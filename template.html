@@ -9,20 +9,62 @@
     <meta content="width=device-width, initial-scale=1, maximum-scale=1" name="viewport">
     <meta name="referrer" content="unsafe-url">
     <link rel="shortcut icon" href="https://bayanbox.ir/download/6555852378268842239/pcworms.ico">
-    <head:script>
-        <script type="text/javascript">
-            (function() {
-                var now = new Date();
-                var head = document.getElementsByTagName('head')[0];
-                var script = document.createElement('script');
-                script.async = true;
-                var script_address = 'https://cdn.yektanet.com/js/pcworms.blog.ir/native-pcworms.blog.ir-19921.js';
-                script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
-                head.appendChild(script);
-            })();
-        </script>
-    </head:script>
+    <head:script></head:script>
+    <script type="text/javascript">
+        (function() {
+            var now = new Date();
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.async = true;
+            var script_address = 'https://cdn.yektanet.com/js/pcworms.blog.ir/native-pcworms.blog.ir-19921.js';
+            script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
+            head.appendChild(script);
+        })();
+        var cat_root, menu, link;
+        do_hide = false;
+
+        function show_menu(e, l) {
+            if (menu) {
+                menu.style.display = "none";
+                cat_root.onclick = function() {
+                    show_menu(cat_root, link);
+                };
+            }
+            cat_root = e;
+            menu = e.parentElement.getElementsByClassName('dropdown')[0];
+            link = l;
+            menu.style.display = "grid";
+            if (link)
+                cat_root.onclick = function() {
+                    window.location = link;
+                };
+            do_hide = false;
+        }
+        document.onclick = function() {
+            if (menu && do_hide) {
+                menu.style.display = "none";
+                cat_root.onclick = function() {
+                    show_menu(cat_root, link);
+                };
+            }
+            if (!do_hide)
+                do_hide = true
+        };
+    </script>
+
     <head:style></head:style>
+    <style>
+        .noscript {
+            display: none !important;
+        }
+    </style>
+    <noscript>
+        <style>
+            .script{
+                display: none !important;
+            }
+        </style>
+    </noscript>
 </head>
 
 <body class="color-4">
@@ -48,15 +90,41 @@
             </div>
         </div>
     </div>
-    <box:menu>
-        <div class="main-menu resp">
+
+    <div class="main-menu resp">
+        <box:menu>
             <div class="main-menu-wrp">
                 <view:menu>
                     <a class="(*menu_item_selected*)" href="(*menu_item_link*)">(*menu_item_title*)</a>
                 </view:menu>
             </div>
+        </box:menu>
+    </div>
+    <box:categories>
+        <div class="category_menu">
+            <view:categories>
+                <div class="dropdown-container">
+                    <check:if category_selected>
+                        <a class="noscript selected">(*category_name*)<i class="arrow"></i></a>
+                    </check:if>
+                    <check:if not category_selected>
+                        <a class="noscript" onclick='show_menu(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
+                    </check:if>
+                    <check:if category_selected>
+                        <a class="script selected">(*category_name*)<i class="arrow"></i></a>
+                    </check:if>
+                    <check:if not category_selected>
+                        <a class="script" onclick='show_menu(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
+                    </check:if>
+                    <check:if category_children>
+                        <div class="dropdown absolute">
+                            <view:category_children></view:category_children>
+                        </div>
+                    </check:if>
+                </div>
+            </view:categories>
         </div>
-    </box:menu>
+    </box:categories>
 
     <div class="content-wrp">
         <box:messages>
@@ -126,16 +194,13 @@ rate-button, rete-up, rate-down, rated) -->
                                     <span class="rate-box (*user_rated*)">
 										<span class="rate-button-box rate-up (*user_rated_up*)">
 											<a class="rate-button" href="(*rate_up_link*)" rel="nofollow" title="موافق">
-												<img alt="موافقین" class="rateimg"
-													src="//blog.ir/media/images/cleardot.gif">
+												<img alt="موافقین" class="rateimg" src="//blog.ir/media/images/cleardot.gif">
 												(*up_rates*)
 											</a>
 										</span>
                                     <span class="rate-button-box rate-down (*user_rated_down*)">
-											<a class="rate-button" href="(*rate_down_link*)" rel="nofollow"
-												title="مخالف">
-												<img alt="مخالفین" class="rateimg"
-													src="//blog.ir/media/images/cleardot.gif">
+											<a class="rate-button" href="(*rate_down_link*)" rel="nofollow" title="مخالف">
+												<img alt="مخالفین" class="rateimg" src="//blog.ir/media/images/cleardot.gif">
 												(*down_rates*)
 											</a>
 										</span>
@@ -180,8 +245,7 @@ rate-button, rete-up, rate-down, rated) -->
                                             <check:if comment_email>
                                                 <a class="comment-email" href="mailto:(*comment_email*)" title="(*comment_email*)"></a>
                                             </check:if>
-                                            <a class="comment-date" href="(*comment_link*)">(*comment_date format="%d %B
-												%y ، %H:%M"*)</a>
+                                            <a class="comment-date" href="(*comment_link*)">(*comment_date*)</a>
                                         </div>
                                         <div class="comment-details-right">
                                             <span class="comment-avatar"><img src="(*comment_avatar*)"></span>
@@ -261,12 +325,10 @@ rate-button, rete-up, rate-down, rated) -->
                                             <check:if comment_email>
                                                 <a class="comment-email" href="mailto:(*comment_email*)" title="(*comment_email*)"></a>
                                             </check:if>
-                                            <a class="comment-date" href="(*comment_link*)">(*comment_date format="%d %B
-												%y ، %H:%M"*)</a>
+                                            <a class="comment-date" href="(*comment_link*)">(*comment_date format="%d %B%y ، %H:%M"*)</a>
                                         </div>
                                         <div class="comment-details-right">
-                                            <span class="comment-avatar"><img
-													src="//blog.ir/media/images/guest.png?1"></span>
+                                            <span class="comment-avatar"><img src="//blog.ir/media/images/guest.png?1"></span>
                                             <span class="comment-name">(*comment_fullname*)</span>
                                         </div>
                                     </div>
@@ -351,18 +413,14 @@ DON'T edit rate-* classes: (rate-box rate-counter rate-button-box,
 rate-button, rete-up, rate-down, rated) -->
                                         <span class="rate-box (*user_rated*)">
 											<span class="rate-button-box rate-up (*user_rated_up*)">
-												<a class="rate-button" href="(*rate_up_link*)" rel="nofollow"
-													title="موافق">
-													<img alt="موافقین" class="rateimg"
-														src="//blog.ir/media/images/cleardot.gif">
+												<a class="rate-button" href="(*rate_up_link*)" rel="nofollow" title="موافق">
+													<img alt="موافقین" class="rateimg" src="//blog.ir/media/images/cleardot.gif">
 													(*up_rates*)
 												</a>
 											</span>
                                         <span class="rate-button-box rate-down (*user_rated_down*)">
-												<a class="rate-button" href="(*rate_down_link*)" rel="nofollow"
-													title="مخالف">
-													<img alt="مخالفین" class="rateimg"
-														src="//blog.ir/media/images/cleardot.gif">
+												<a class="rate-button" href="(*rate_down_link*)" rel="nofollow" title="مخالف">
+													<img alt="مخالفین" class="rateimg" src="//blog.ir/media/images/cleardot.gif">
 													(*down_rates*)
 												</a>
 											</span>
@@ -403,12 +461,10 @@ rate-button, rete-up, rate-down, rated) -->
                                                                 <check:if comment_email>
                                                                     <a class="comment-email" href="mailto:(*comment_email*)" title="(*comment_email*)"></a>
                                                                 </check:if>
-                                                                <a class="comment-date" href="(*comment_link*)">(*comment_date format="%d %B
-																	%y ، %H:%M"*)</a>
+                                                                <a class="comment-date" href="(*comment_link*)">(*comment_date format="%d %B%y ، %H:%M"*)</a>
                                                             </div>
                                                             <div class="comment-details-right">
-                                                                <span class="comment-avatar"><img
-																		src="(*comment_avatar*)"></span>
+                                                                <span class="comment-avatar"><img src="(*comment_avatar*)"></span>
                                                                 <span class="comment-name">(*comment_fullname*)</span>
                                                             </div>
                                                         </div>
@@ -479,35 +535,10 @@ rate-button, rete-up, rate-down, rated) -->
                 </div>
             </box:blog_info>
 
-            <box:post_list flag="mobile">
-                <div class="sidebox">
-                    <div class="sidebox-title">پیام های کوتاه</div>
-                    <div class="sidebox-content">
-                        <ul>
-                            <view:post_list>
-                                <li class="(*post_selected*)">
-                                    <div class="post-list-date">(*post_date format="%G{%e %B %y , %H:%M}"*)</div>
-                                    <a href="(*post_link*)">(*post_title*)</a>
-                                </li>
-                            </view:post_list>
-                        </ul>
-                    </div>
-                </div>
-            </box:post_list>
-
-            <box:ads>
-                <div class="sidebox">
-                    <div class="sidebox-title">تبلیغات</div>
-                    <div class="sidebox-content view-ads">
-                        <div class="ads" id="pos-article-display-29015"></div>
-                    </div>
-                </div>
-            </box:ads>
-
             <box:categories>
                 <div class="sidebox">
-                    <div class="sidebox-title">طبقه بندی موضوعی</div>
-                    <div class="sidebox-content categories">
+                    <div class="sidebox-title" onclick="show_menu(this,null);">طبقه بندی موضوعی <i class="down-arrow"></i></div>
+                    <div class="sidebox-content categories dropdown">
                         <ul>
                             <view:categories>
                                 <li class="(*category_selected*)">
@@ -535,6 +566,68 @@ rate-button, rete-up, rate-down, rated) -->
                 </div>
             </box:categories>
 
+            <box:recent_posts>
+                <div class="sidebox">
+                    <div class="sidebox-title" onclick="show_menu(this,null);">تازه ترین مطالب<i class="down-arrow"></i></div>
+                    <div class="sidebox-content dropdown">
+                        <ul>
+                            <view:recent_posts>
+                                <li class="(*post_selected*)">
+                                    <div class="post-list-date none">(*post_date format="%y/%m/%d"*)</div>
+                                    <a href="(*post_link*)">(*post_title*)</a>
+                                </li>
+                            </view:recent_posts>
+                        </ul>
+                    </div>
+                </div>
+            </box:recent_posts>
+
+            <box:archive>
+                <div class="sidebox">
+                    <div class="sidebox-title" onclick="show_menu(this,null);">بایگانی</div>
+                    <div class="sidebox-content dropdown">
+                        <ul>
+                            <view:archive>
+                                <li class="(*archive_selected*)">
+                                    <a href="(*link_url*)">(*link_name*)</a><span class="post-list-count">((*link_count*))</span>
+                                </li>
+                            </view:archive>
+                        </ul>
+                    </div>
+                </div>
+            </box:archive>
+
+            <div class="sidebox blank">
+                <div class="sidebox-content">
+                    (*follow_box*)
+                </div>
+            </div>
+
+            <box:post_list flag="mobile">
+                <div class="sidebox">
+                    <div class="sidebox-title">پیام های کوتاه</div>
+                    <div class="sidebox-content">
+                        <ul>
+                            <view:post_list>
+                                <li class="(*post_selected*)">
+                                    <div class="post-list-date">(*post_date format="%G{%e %B %y , %H:%M}"*)</div>
+                                    <a href="(*post_link*)">(*post_title*)</a>
+                                </li>
+                            </view:post_list>
+                        </ul>
+                    </div>
+                </div>
+            </box:post_list>
+
+            <box:ads>
+                <div class="sidebox">
+                    <div class="sidebox-title">تبلیغات</div>
+                    <div class="sidebox-content view-ads">
+                        <div class="ads" id="pos-article-display-29015"></div>
+                    </div>
+                </div>
+            </box:ads>
+
             <box:stat>
                 <div class="sidebox">
                     <div class="sidebox-title">خلاصه آمار</div>
@@ -558,37 +651,6 @@ rate-button, rete-up, rate-down, rated) -->
                     </div>
                 </div>
             </box:tag_cloud>
-
-            <box:archive>
-                <div class="sidebox">
-                    <div class="sidebox-title">بایگانی</div>
-                    <div class="sidebox-content">
-                        <ul>
-                            <view:archive>
-                                <li class="(*archive_selected*)">
-                                    <a href="(*link_url*)">(*link_name*)</a><span class="post-list-count">((*link_count*))</span>
-                                </li>
-                            </view:archive>
-                        </ul>
-                    </div>
-                </div>
-            </box:archive>
-
-            <box:recent_posts>
-                <div class="sidebox">
-                    <div class="sidebox-title">آخرین مطلب</div>
-                    <div class="sidebox-content">
-                        <ul>
-                            <view:recent_posts>
-                                <li class="(*post_selected*)">
-                                    <div class="post-list-date none">(*post_date format="%y/%m/%d"*)</div>
-                                    <a href="(*post_link*)">(*post_title*)</a>
-                                </li>
-                            </view:recent_posts>
-                        </ul>
-                    </div>
-                </div>
-            </box:recent_posts>
 
             <box:most_visited_posts>
                 <div class="sidebox">
@@ -721,9 +783,7 @@ rate-button, rete-up, rate-down, rated) -->
             </div>
         </div>
     </div>
-
-
-
+    <iframe id="news" style="display: none;" src="//pcworms.blog.ir/page/news/"></iframe>
 </body>
 
 </html>

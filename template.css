@@ -110,7 +110,7 @@ img {
 }
 
 a {
-    color: #f3193d;
+    color: #18d0eb;
     cursor: pointer;
     text-decoration: none;
     -moz-transition-duration: .2s;
@@ -158,12 +158,10 @@ a:active {
 
 .header h1 {
     font: 40px/1.2em "yekan", "tahoma", "arial", "Times New Roman", Times, Arial, serif;
-    color: #f3193d;
+    color: #18d0eb;
     direction: rtl;
     margin: auto;
 }
-
-.header h1 a:hover {}
 
 .header h2 {
     font: 20px/1.2em "yekan", "tahoma", "arial", "Times New Roman", Times, Arial, serif;
@@ -183,35 +181,102 @@ a:active {
     cursor: default;
 }
 
+.category_menu {
+    direction: rtl;
+    cursor: default;
+    position: relative;
+    margin: auto;
+    text-align: center;
+    background-color: rgb(19, 19, 19);
+}
+
 .main-menu-wrp {
     position: relative;
     margin: auto;
 }
 
-.main-menu a {
+.main-menu a,
+.category_menu a {
     font: 17px/1em "yekan", "tahoma", "arial", "Times New Roman", Times, Arial, serif;
     display: inline-block;
     padding: 20px 15px 20px;
-    color: rgba(255, 255, 255, 0.6);
+    color: #a0a0a0;
     border-top: 3px solid transparent;
     cursor: pointer;
 }
 
-.main-menu a:hover {
-    color: rgba(255, 255, 255, 0.9);
+.main-menu a:hover,
+.category_menu a:hover {
+    color: white;
     border-top: 3px solid rgba(255, 255, 255, 0.9);
 }
 
-.main-menu a.selected {
-    color: rgba(255, 255, 255, 0.9);
-    border-top: 3px solid #f3193d;
+.main-menu a.selected,
+.category_menu a.selected {
+    color: white;
+    border-top: 3px solid #18d0eb;
 }
 
 .main-menu.resp a.selected {
-    color: rgba(255, 255, 255, 0.9);
-    border-top: 3px solid #f3193d;
+    color: white;
+    border-top: 3px solid #18d0eb;
     padding: 10px 15px 13px;
     background: rgba(0, 0, 0, 0.5);
+}
+
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+}
+
+.noscript .dropdown-container:hover .dropdown {
+    display: grid;
+}
+
+.absolute {
+    z-index: 1000;
+    position: absolute;
+}
+
+.dropdown {
+    display: none;
+    max-width: 280px;
+    background-color: rgb(19, 19, 19);
+    grid-template-columns: auto auto auto;
+}
+
+.dropdown a {
+    color: white;
+    display: block;
+    text-decoration: none;
+}
+
+.category_menu>.dropdown-container>a>.arrow {
+    border: solid #a0a0a0;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin-right: 5px;
+}
+
+.category_menu>.dropdown-container:hover>a>.arrow {
+    border-color: white;
+}
+
+.down-arrow {
+    border: solid #a0a0a0;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    margin-right: 5px;
+}
+
+*:hover .down-arrow {
+    border-color: white;
 }
 
 
@@ -237,7 +302,7 @@ a:active {
     cursor: default;
     margin-bottom: 15px;
     background: rgba(0, 0, 0, 0.5);
-    border-top: 3px solid #f3193d;
+    border-top: 3px solid #18d0eb;
     box-shadow: 0 3px 5px rgba(117, 100, 100, 0.1);
 }
 
@@ -341,7 +406,7 @@ a:active {
 }
 
 .block-content .post h2 a:hover {
-    color: #f3193d;
+    color: #18d0eb;
 }
 
 .post-content {
@@ -772,7 +837,7 @@ img.rateup {
     padding: 10px;
     margin-bottom: 15px;
     background: rgba(0, 0, 0, 0.5);
-    border-top: 3px solid #f3193d;
+    border-top: 3px solid #18d0eb;
     box-shadow: 0 3px 5px rgba(117, 100, 100, 0.1);
     font: 14px "yekan", "tahoma", "arial", "Times New Roman", Helvetica;
 }
@@ -931,7 +996,7 @@ img.rateup {
 }
 
 .sidebox-content ul li a:hover {
-    color: #f3193d;
+    color: #18d0eb;
 }
 
 .sidebox-content ul li:hover {
@@ -1145,7 +1210,7 @@ img.rateup {
 }
 
 .footer a:hover {
-    color: #f3193d;
+    color: #18d0eb;
 }
 
 .footer-wrp {
@@ -1266,13 +1331,13 @@ img.rateup {
         display: none;
     }
     .main-menu.resp {
-        margin: 20px 0 15px;
+        margin: 0px 0 15px;
         display: block;
     }
     .main-menu-wrp {
         margin: auto;
         text-align: center;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: black;
     }
     .header .header-right {
         position: relative;
