@@ -240,12 +240,12 @@ a:active {
 
 .dropdown {
     display: none;
-    background-color: rgb(19, 19, 19);
-    grid-template-columns: auto auto auto;
 }
 
 .category_menu .dropdown {
-    width: 40vw;
+    width: 300px;
+    background-color: rgb(19, 19, 19);
+    grid-template-columns: auto auto auto;
 }
 
 .category_menu .dropdown a {
@@ -923,6 +923,14 @@ img.rateup {
 .block-sidebar .sidebox {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 15px;
+}
+
+.sidebox .news-list .item {
+    border-bottom: solid rgba(255, 255, 255, 0.7) 1px;
+}
+
+.sidebox .news-list .item:last-child {
+    border-bottom: none;
 }
 
 .sidebox .sidebox-title {
