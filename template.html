@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="https://bayanbox.ir/download/6555852378268842239/pcworms.ico">
     <head:script></head:script>
     <script type="text/javascript">
+        //==========[ads]==========
         (function() {
             var now = new Date();
             var head = document.getElementsByTagName('head')[0];
@@ -20,36 +21,69 @@
             script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
             head.appendChild(script);
         })();
-        var cat_root, menu, link;
+        var btn, dropdown, link, func;
         do_hide = false;
 
-        function show_menu(e, l) {
-            if (menu) {
-                menu.style.display = "none";
-                cat_root.onclick = function() {
-                    show_menu(cat_root, link);
-                };
+        //==========[drop down]==========
+        function show_drp(e, l) {
+            if (dropdown) {
+                //hide another dropdown
+                dropdown.style.display = "none";
+                btn.setAttribute('onclick', 'show_drp(this, null);')
             }
-            cat_root = e;
-            menu = e.parentElement.getElementsByClassName('dropdown')[0];
+            btn = e;
+            dropdown = e.parentElement.getElementsByClassName('dropdown')[0];
             link = l;
-            menu.style.display = "grid";
+            dropdown.style.display = "grid";
             if (link)
-                cat_root.onclick = function() {
+                btn.onclick = function() {
                     window.location = link;
                 };
             do_hide = false;
         }
         document.onclick = function() {
-            if (menu && do_hide) {
-                menu.style.display = "none";
-                cat_root.onclick = function() {
-                    show_menu(cat_root, link);
-                };
+            if (dropdown && do_hide) {
+                dropdown.style.display = "none";
+                btn.setAttribute('onclick', 'show_drp(this, null);')
             }
             if (!do_hide)
                 do_hide = true
         };
+
+        //==========[news]==========
+        window.onload = function() {
+            if (window.location != "http://pcworms.blog.ir/page/news") {
+                news = document.createElement('iframe');
+                news.setAttribute('src', '//pcworms.blog.ir/page/news/');
+                news.style.display = 'none';
+                news.onload = function() {
+                    n = news.contentDocument.getElementsByClassName('news');
+                    if (n.length > 0)
+                        document.getElementsByClassName('news-list')[0].innerHTML = '';
+                    for (i = 0; i < n.length; i++) {
+                        element = n[i];
+                        title = element.getElementsByTagName('h1')[0].innerHTML;
+                        body = element.getElementsByTagName('p')[0];
+                        item = document.createElement('div');
+                        item.setAttribute('class', 'item');
+
+                        title_ = document.createElement('h4');
+                        title_.setAttribute('onclick', 'show_drp(this, null);')
+                        title_.innerHTML = title;
+                        item.appendChild(title_)
+                        if (body) {
+                            title_.innerHTML += ' <i class="down-arrow"></i>';
+                            body_ = document.createElement('div');
+                            body_.setAttribute('class', 'dropdown');
+                            body_.appendChild(body);
+                            item.appendChild(body_);
+                        }
+                        document.getElementsByClassName('news-list')[0].appendChild(item);
+                    }
+                };
+                document.getElementsByTagName('body')[0].appendChild(news);
+            }
+        }
     </script>
 
     <head:style></head:style>
@@ -108,13 +142,13 @@
                         <a class="noscript selected">(*category_name*)<i class="arrow"></i></a>
                     </check:if>
                     <check:if not category_selected>
-                        <a class="noscript" onclick='show_menu(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
+                        <a class="noscript" onclick='show_drp(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
                     </check:if>
                     <check:if category_selected>
                         <a class="script selected">(*category_name*)<i class="arrow"></i></a>
                     </check:if>
                     <check:if not category_selected>
-                        <a class="script" onclick='show_menu(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
+                        <a class="script" onclick='show_drp(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
                     </check:if>
                     <check:if category_children>
                         <div class="dropdown absolute">
@@ -535,9 +569,19 @@ rate-button, rete-up, rate-down, rated) -->
                 </div>
             </box:blog_info>
 
+            <div class="sidebox">
+                <div class="sidebox-title">اخبار وبلاگ</div>
+                <div class="sidebox-content news-list">
+                    <div class="item" style="text-align: center;">اخباری برای نمایش نیست</div>
+                    <noscript>
+                        <div class="item">JavaScript Needed</div>
+                    </noscript>
+                </div>
+            </div>
+
             <box:categories>
                 <div class="sidebox">
-                    <div class="sidebox-title" onclick="show_menu(this,null);">طبقه بندی موضوعی <i class="down-arrow"></i></div>
+                    <div class="sidebox-title" onclick="show_drp(this,null);">طبقه بندی موضوعی <i class="down-arrow"></i></div>
                     <div class="sidebox-content categories dropdown">
                         <ul>
                             <view:categories>
@@ -568,7 +612,7 @@ rate-button, rete-up, rate-down, rated) -->
 
             <box:recent_posts>
                 <div class="sidebox">
-                    <div class="sidebox-title" onclick="show_menu(this,null);">تازه ترین مطالب<i class="down-arrow"></i></div>
+                    <div class="sidebox-title" onclick="show_drp(this,null);">تازه ترین مطالب<i class="down-arrow"></i></div>
                     <div class="sidebox-content dropdown">
                         <ul>
                             <view:recent_posts>
@@ -584,7 +628,7 @@ rate-button, rete-up, rate-down, rated) -->
 
             <box:archive>
                 <div class="sidebox">
-                    <div class="sidebox-title" onclick="show_menu(this,null);">بایگانی</div>
+                    <div class="sidebox-title" onclick="show_drp(this,null);">بایگانی</div>
                     <div class="sidebox-content dropdown">
                         <ul>
                             <view:archive>
@@ -783,7 +827,6 @@ rate-button, rete-up, rate-down, rated) -->
             </div>
         </div>
     </div>
-    <iframe id="news" style="display: none;" src="//pcworms.blog.ir/page/news/"></iframe>
 </body>
 
 </html>

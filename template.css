@@ -240,15 +240,19 @@ a:active {
 
 .dropdown {
     display: none;
-    max-width: 280px;
     background-color: rgb(19, 19, 19);
     grid-template-columns: auto auto auto;
 }
 
-.dropdown a {
+.category_menu .dropdown {
+    width: 40vw;
+}
+
+.category_menu .dropdown a {
     color: white;
     display: block;
     text-decoration: none;
+    padding: 20px 5px 20px;
 }
 
 .category_menu>.dropdown-container>a>.arrow {
