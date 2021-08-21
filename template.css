@@ -8,7 +8,7 @@ html {
 
 #template-editing-message {
     text-align: center;
-    display: inherit;
+    display: none;
     /*display: none/inherit */
 }
 
@@ -188,13 +188,19 @@ a:active {
 /*-- Header --*/
 
 .header {
-    height: 80px;
+    min-height: 80px;
     background: rgba(0, 0, 0, 1);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     position: sticky;
     z-index: 1000;
     top: 0px;
     margin-top: 15px;
+}
+
+.header-logo {
+    display: none;
+    text-align: center;
+    margin: auto;
 }
 
 .header-wrp {
@@ -1436,6 +1442,9 @@ img.rateup {
     }
     .header {
         position: unset;
+    }
+    .header-logo {
+        display: block;
     }
     .header-wrp {
         width: inherit;
