@@ -21,70 +21,79 @@
             script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
             head.appendChild(script);
         })();
-        var btn, dropdown, link, func;
-        do_hide = false;
 
         //==========[drop down]==========
         function show_drp(e, l) {
-            if (dropdown) {
-                //hide another dropdown
-                dropdown.style.display = "none";
-                btn.setAttribute('onclick', 'show_drp(this, null);')
-            }
-            btn = e;
-            dropdown = e.parentElement.getElementsByClassName('dropdown')[0];
-            link = l;
-            dropdown.style.display = "grid";
-            if (link)
-                btn.onclick = function() {
-                    window.location = link;
-                };
-            do_hide = false;
+            hide_drp();
+            dropdown = e.parentElement.getElementsByClassName('dropdown-content')[0]
+            if (l && dropdown.classList.contains('show')) {
+                // goto link
+                window.location = l;
+            } else
+                dropdown.classList.toggle("show");
         }
-        document.onclick = function() {
-            if (dropdown && do_hide) {
-                dropdown.style.display = "none";
-                btn.setAttribute('onclick', 'show_drp(this, null);')
+
+        function hide_drp() {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
             }
-            if (!do_hide)
-                do_hide = true
-        };
+        }
+        window.onclick = function(event) {
+            if (!event.target.matches('.dropbtn')) {
+                hide_drp();
+            }
+        }
+
+        var news;
 
         //==========[news]==========
-        window.onload = function() {
-            if (window.location != "http://pcworms.blog.ir/page/news") {
-                news = document.createElement('iframe');
-                news.setAttribute('src', '//pcworms.blog.ir/page/news/');
-                news.style.display = 'none';
-                news.onload = function() {
-                    n = news.contentDocument.getElementsByClassName('news');
-                    news_box = document.getElementsByClassName('news-list')[0];
-                    if (n.length > 0)
-                        document.getElementsByClassName('news-list')[0].innerHTML = '';
-                    for (i = 0; i < n.length; i++) {
-                        element = n[i];
-                        title = element.getElementsByTagName('h1')[0].innerHTML;
-                        body = element.getElementsByTagName('p')[0];
-                        item = document.createElement('div');
-                        item.setAttribute('class', 'item');
-
-                        title_ = document.createElement('h4');
-                        title_.innerHTML = title;
-                        item.appendChild(title_)
-                        if (body) {
-                            title_.innerHTML += ' <i class="down-arrow"></i>';
-                            title_.setAttribute('onclick', 'show_drp(this, null);')
-                            body_ = document.createElement('div');
-                            body_.setAttribute('class', 'dropdown');
-                            body_.appendChild(body);
-                            item.appendChild(body_);
-                        }
-                        news_box.appendChild(item);
+        function loadNews() {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        news = JSON.parse(xhr.responseText);
+                        console.log(`news successfully loaded.\nnews count: ${news.length}`);
+                    } else {
+                        console.error(`unable to load news.\nstatus code: ${xhr.status}`);
+                        news = [];
                     }
-                };
-                document.getElementsByTagName('body')[0].appendChild(news);
-            }
+                }
+            };
+            xhr.open("GET", "https://raw.githubusercontent.com/pcworms/news/main/news.json", true);
+            xhr.send();
         }
+        loadNews()
+
+        window.onload = function() {
+            news_box = document.getElementsByClassName('news-list')[0]
+            if (news.length > 0)
+                news_box.innerHTML = '';
+            for (i = 0; i < news.length; i++) {
+                n = news[i];
+                item = document.createElement('div');
+                item.setAttribute('class', 'item dropdown');
+
+                title_ = document.createElement('h4');
+                title_.innerHTML = n.title;
+                title_.classList.add('dropbtn');
+                item.appendChild(title_)
+                if (n.body) {
+                    title_.innerHTML += ' <i class="down-arrow"></i>';
+                    title_.setAttribute('onclick', 'show_drp(this, null);')
+                    body_ = document.createElement('div');
+                    body_.setAttribute('class', 'dropdown-content');
+                    body_.innerHTML = n.body;
+                    item.appendChild(body_);
+                }
+                news_box.appendChild(item);
+                console.log('news added to box')
+            }
+        };
     </script>
 
     <head:style></head:style>
@@ -138,21 +147,21 @@
     <box:categories>
         <div class="category_menu">
             <view:categories>
-                <div class="dropdown-container">
+                <div class="dropdown">
                     <check:if category_selected>
-                        <a class="noscript selected">(*category_name*)<i class="arrow"></i></a>
+                        <a class="dropbtn noscript selected">(*category_name*)<i class="arrow"></i></a>
                     </check:if>
                     <check:if not category_selected>
-                        <a class="noscript" onclick='show_drp(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
+                        <a class="dropbtn noscript" onclick='show_drp(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
                     </check:if>
                     <check:if category_selected>
-                        <a class="script selected">(*category_name*)<i class="arrow"></i></a>
+                        <a class="dropbtn script selected">(*category_name*)<i class="arrow"></i></a>
                     </check:if>
                     <check:if not category_selected>
-                        <a class="script" onclick='show_drp(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
+                        <a class="dropbtn script" onclick='show_drp(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
                     </check:if>
                     <check:if category_children>
-                        <div class="dropdown absolute">
+                        <div class="dropdown-content absolute">
                             <view:category_children></view:category_children>
                         </div>
                     </check:if>
@@ -581,9 +590,9 @@ rate-button, rete-up, rate-down, rated) -->
             </div>
 
             <box:categories>
-                <div class="sidebox">
-                    <div class="sidebox-title" onclick="show_drp(this,null);">طبقه بندی موضوعی <i class="down-arrow"></i></div>
-                    <div class="sidebox-content categories dropdown">
+                <div class="sidebox dropdown">
+                    <div class="sidebox-title dropbtn" onclick="show_drp(this,null);">طبقه بندی موضوعی <i class="down-arrow"></i></div>
+                    <div class="sidebox-content categories dropdown-content">
                         <ul>
                             <view:categories>
                                 <li class="(*category_selected*)">
@@ -612,9 +621,9 @@ rate-button, rete-up, rate-down, rated) -->
             </box:categories>
 
             <box:recent_posts>
-                <div class="sidebox">
-                    <div class="sidebox-title" onclick="show_drp(this,null);">تازه ترین مطالب<i class="down-arrow"></i></div>
-                    <div class="sidebox-content dropdown">
+                <div class="sidebox dropdown">
+                    <div class="sidebox-title dropbtn" onclick="show_drp(this,null);">تازه ترین مطالب<i class="down-arrow"></i></div>
+                    <div class="sidebox-content dropdown-content">
                         <ul>
                             <view:recent_posts>
                                 <li class="(*post_selected*)">
@@ -628,9 +637,9 @@ rate-button, rete-up, rate-down, rated) -->
             </box:recent_posts>
 
             <box:archive>
-                <div class="sidebox">
-                    <div class="sidebox-title" onclick="show_drp(this,null);">بایگانی</div>
-                    <div class="sidebox-content dropdown">
+                <div class="sidebox dropdown">
+                    <div class="sidebox-title dropbtn" onclick="show_drp(this,null);">بایگانی</div>
+                    <div class="sidebox-content dropdown-content">
                         <ul>
                             <view:archive>
                                 <li class="(*archive_selected*)">

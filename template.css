@@ -8,7 +8,7 @@ html {
 
 #template-editing-message {
     text-align: center;
-    display: none;
+    display: inherit;
     /*display: none/inherit */
 }
 
@@ -130,6 +130,61 @@ a:active {
 }
 
 
+/*-- Drop down --*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    min-width: 120px;
+    z-index: 1;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.category_menu .dropbtn:hover,
+.category_menu .dropbtn:focus {
+    background-color: black;
+    color: white;
+}
+
+.dropbtn,
+.dropbtn * {
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    height: auto;
+    width: 100%;
+}
+
+.category_menu .dropdown-content {
+    grid-template-columns: auto auto;
+    left: 50%;
+}
+
+.show {
+    display: block;
+    animation: drp-fadein 0.5s ease;
+}
+
+@keyframes drp-fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.category_menu .show {
+    display: grid;
+}
+
+
 /*-- Header --*/
 
 .header {
@@ -181,15 +236,6 @@ a:active {
     cursor: default;
 }
 
-.category_menu {
-    direction: rtl;
-    cursor: default;
-    position: relative;
-    margin: auto;
-    text-align: center;
-    background-color: rgb(19, 19, 19);
-}
-
 .main-menu-wrp {
     position: relative;
     margin: auto;
@@ -224,28 +270,20 @@ a:active {
     background: rgba(0, 0, 0, 0.5);
 }
 
-.dropdown-container {
+
+/*-- category menu --*/
+
+.category_menu {
+    direction: rtl;
+    cursor: default;
     position: relative;
-    display: inline-block;
-}
-
-.noscript .dropdown-container:hover .dropdown {
-    display: grid;
-}
-
-.absolute {
-    z-index: 1000;
-    position: absolute;
-}
-
-.dropdown {
-    display: none;
+    margin: auto;
+    text-align: center;
+    background-color: rgb(19, 19, 19);
 }
 
 .category_menu .dropdown {
-    width: 300px;
-    background-color: rgb(19, 19, 19);
-    grid-template-columns: auto auto auto;
+    background-color: rgba(19, 19, 19, .8);
 }
 
 .category_menu .dropdown a {
@@ -253,6 +291,7 @@ a:active {
     display: block;
     text-decoration: none;
     padding: 20px 5px 20px;
+    width: auto;
 }
 
 .category_menu>.dropdown-container>a>.arrow {
@@ -279,7 +318,8 @@ a:active {
     margin-right: 5px;
 }
 
-*:hover .down-arrow {
+*:hover>.down-arrow,
+*:hover>.arrow {
     border-color: white;
 }
 
@@ -923,6 +963,14 @@ img.rateup {
 .block-sidebar .sidebox {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     margin-bottom: 15px;
+}
+
+.sidebox.dropdown {
+    display: block;
+}
+
+.sidebox .dropdown-content {
+    width: auto;
 }
 
 .sidebox .news-list .item {
