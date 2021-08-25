@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="fa">
-
-<head>
+<!DOCTYPE html><html lang="fa"><head>
     <head:meta></head:meta>
     <!-- Layout - v4.5.0 - Responsive -->
     <!-- blog.ir template no. 28992 -->
@@ -10,102 +7,16 @@
     <meta name="referrer" content="unsafe-url">
     <link rel="shortcut icon" href="https://bayanbox.ir/download/6555852378268842239/pcworms.ico">
     <head:script></head:script>
-    <script type="text/javascript">
-        //==========[ads]==========
-        (function() {
-            var now = new Date();
-            var head = document.getElementsByTagName('head')[0];
-            var script = document.createElement('script');
-            script.async = true;
-            var script_address = 'https://cdn.yektanet.com/js/pcworms.blog.ir/native-pcworms.blog.ir-19921.js';
-            script.src = script_address + '?v=' + now.getFullYear().toString() + '0' + now.getMonth() + '0' + now.getDate() + '0' + now.getHours();
-            head.appendChild(script);
-        })();
-
-        //==========[drop down]==========
-        function show_drp(e, l) {
-            hide_drp();
-            dropdown = e.parentElement.getElementsByClassName('dropdown-content')[0]
-            if (l && dropdown.classList.contains('show')) {
-                // goto link
-                window.location = l;
-            } else
-                dropdown.classList.toggle("show");
-        }
-
-        function hide_drp() {
-            var dropdowns = document.getElementsByClassName("dropdown-content");
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-        window.onclick = function(event) {
-            if (!event.target.matches('.dropbtn')) {
-                hide_drp();
-            }
-        }
-
-        var news;
-
-        //==========[news]==========
-        function loadNews() {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        news = JSON.parse(xhr.responseText);
-                        console.log(`news successfully loaded.\nnews count: ${news.length}`);
-                    } else {
-                        console.error(`unable to load news.\nstatus code: ${xhr.status}`);
-                        news = [];
-                    }
-                }
-            };
-            xhr.open("GET", "https://raw.githubusercontent.com/pcworms/news/main/news.json", true);
-            xhr.send();
-        }
-        loadNews()
-
-        window.onload = function() {
-            news_box = document.getElementsByClassName('news-list')[0]
-            if (news.length > 0)
-                news_box.innerHTML = '';
-            for (i = 0; i < news.length; i++) {
-                n = news[i];
-                item = document.createElement('div');
-                item.setAttribute('class', 'item dropdown');
-
-                title_ = document.createElement('h4');
-                title_.innerHTML = n.title;
-                title_.classList.add('dropbtn');
-                item.appendChild(title_)
-                if (n.body) {
-                    title_.innerHTML += ' <i class="down-arrow"></i>';
-                    title_.setAttribute('onclick', 'show_drp(this, null);')
-                    body_ = document.createElement('div');
-                    body_.setAttribute('class', 'dropdown-content');
-                    body_.innerHTML = n.body;
-                    item.appendChild(body_);
-                }
-                news_box.appendChild(item);
-                console.log('news added to box')
-            }
-        };
-    </script>
+    <script type="text/javascript" src="https://bayanbox.ir/view/8063952533987665504/scripts.js"></script>
 
     <head:style></head:style>
-    <style>
-        .noscript {
-            display: none !important;
-        }
-    </style>
     <noscript>
         <style>
-            .script{
+            .category_menu, .arrow, .down-arrow, .news-box{
                 display: none !important;
+            }
+            .sidebox .dropdown-content{
+                display: block;
             }
         </style>
     </noscript>
@@ -152,16 +63,10 @@
             <view:categories>
                 <div class="dropdown">
                     <check:if category_selected>
-                        <a class="dropbtn noscript selected">(*category_name*)<i class="arrow"></i></a>
+                        <a class="dropbtn selected">(*category_name*)<i class="arrow"></i></a>
                     </check:if>
                     <check:if not category_selected>
-                        <a class="dropbtn noscript" onclick='show_drp(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
-                    </check:if>
-                    <check:if category_selected>
-                        <a class="dropbtn script selected">(*category_name*)<i class="arrow"></i></a>
-                    </check:if>
-                    <check:if not category_selected>
-                        <a class="dropbtn script" onclick='show_drp(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
+                        <a class="dropbtn" onclick='show_drp(this,"(*category_link*)");'>(*category_name*)<i class="arrow"></i></a>
                     </check:if>
                     <check:if category_children>
                         <div class="dropdown-content absolute">
@@ -262,7 +167,12 @@ rate-button, rete-up, rate-down, rated) -->
                         </div>
                     </div>
                     <!-- /post -->
-
+									<div style="display: flex; justify-content: center; padding: 1%;">
+											<a href="https://hub.iranserver.com/aff.php?aff=6885">
+												<img src="https://www.iranserver.com/public/assets/img/banner/468x60.gif" alt="IranServer VPS">
+											</a>
+										
+										</div>
                     <!-- #Post_Comments) -->
                     <box:post_comments>
                         <a name="comments"></a>
@@ -342,7 +252,7 @@ rate-button, rete-up, rate-down, rated) -->
                         <div class="post-content">(*page_content*)</div>
                     </div>
                     <!-- /post -->
-
+										
                     <!-- #Post_Comments) -->
                     <box:page_comments>
                         <a name="comments"></a>
@@ -677,10 +587,14 @@ rate-button, rete-up, rate-down, rated) -->
             </box:post_list>
 
             <box:ads>
-                <div class="sidebox">
-                    <div class="sidebox-title">تبلیغات</div>
+                <div class="sidebox blank">
                     <div class="sidebox-content view-ads">
                         <div class="ads" id="pos-article-display-29015"></div>
+												<div>
+													<a href="https://hub.iranserver.com/aff.php?aff=6885">
+														<img src="https://www.iranserver.com/public/assets/img/banner/250x250.gif" alt="Iranserver hosting">
+													</a>
+												</div>
                     </div>
                 </div>
             </box:ads>
@@ -840,6 +754,6 @@ rate-button, rete-up, rate-down, rated) -->
             </div>
         </div>
     </div>
-</body>
 
-</html>
+
+</body></html>
