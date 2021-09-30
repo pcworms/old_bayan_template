@@ -979,7 +979,12 @@ img.rateup {
     width: auto;
 }
 
+.sidebox .news-list .item .down-arrow{
+    float: left;
+}
+
 .sidebox .news-list .item {
+    display: block !important;
     border-bottom: solid rgba(255, 255, 255, 0.7) 1px;
 }
 
