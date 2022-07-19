@@ -1,4 +1,2 @@
-# PCworms template
-![](https://img.shields.io/github/last-commit/pcworms/template?label=Last%20update)
-
-[Template.html](./template.html) [Template.css](./template.css) 
+# The old template of PCworms blog
+long time ago! The pcworms blog was on blog.ir, we used this template there but it is no longer used
